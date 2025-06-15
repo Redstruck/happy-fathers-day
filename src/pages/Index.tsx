@@ -6,6 +6,7 @@ import PersonalTribute from "@/components/PersonalTribute";
 import DadsFavorites from "@/components/DadsFavorites";
 import AchievementsTimeline from "@/components/AchievementsTimeline";
 import MemoryCollage from "@/components/MemoryCollage";
+
 const Index = () => {
   useEffect(() => {
     const cursor = document.createElement('div');
@@ -75,14 +76,14 @@ const Index = () => {
       sectionObserver.disconnect();
     };
   }, []);
-  return <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-x-hidden">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-x-hidden">
       <HeroSection />
       
       <PhotoGrid />
       <div className="section-divider">
         <div className="divider-wave"></div>
       </div>
-      <FamilyMessages />
       
       <DadsFavorites />
       
@@ -90,7 +91,11 @@ const Index = () => {
       
       <MemoryCollage />
       
+      <FamilyMessages />
+      
       <PersonalTribute />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
