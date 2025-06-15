@@ -1,15 +1,10 @@
-
 import { useState, useEffect } from "react";
-
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+  return <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-purple-600 to-blue-600 opacity-20 animate-pulse"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-red-500/10 to-pink-500/10"></div>
@@ -32,12 +27,8 @@ const HeroSection = () => {
       
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
-        </div>
+        
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
