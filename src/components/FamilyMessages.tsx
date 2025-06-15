@@ -26,8 +26,8 @@ const FamilyMessages = () => {
       color: "from-blue-400/20 to-violet-400/20"
     },
     {
-      name: "Sarah",
-      message: "Dad, you taught me to be strong, independent, and kind. Thank you for being my first hero and biggest supporter. Love you!",
+      name: "Nishka",
+      message: "Happy Father's day! I love you so much! You're the best pug anyone could have!!",
       color: "from-violet-400/20 to-purple-400/20"
     },
     {
