@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import PhotoGrid from "@/components/PhotoGrid";
@@ -7,7 +6,6 @@ import PersonalTribute from "@/components/PersonalTribute";
 import DadsFavorites from "@/components/DadsFavorites";
 import AchievementsTimeline from "@/components/AchievementsTimeline";
 import MemoryCollage from "@/components/MemoryCollage";
-
 const Index = () => {
   useEffect(() => {
     const cursor = document.createElement('div');
@@ -26,21 +24,17 @@ const Index = () => {
       left: -10px;
     `;
     document.body.appendChild(cursor);
-
     const updateCursor = (e: MouseEvent) => {
       cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     };
-
     const handleHover = () => {
       cursor.style.transform += ' scale(1.5)';
     };
-
     const handleLeave = () => {
       cursor.style.transform = cursor.style.transform.replace(' scale(1.5)', '');
     };
-
     document.addEventListener('mousemove', updateCursor);
-    
+
     // Add hover effects to interactive elements
     const interactiveElements = document.querySelectorAll('button, a, .photo-card, .magnetic-hover');
     interactiveElements.forEach(el => {
@@ -53,12 +47,11 @@ const Index = () => {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('section-visible');
-          
+
           // Add stagger effect to child elements
           const children = entry.target.querySelectorAll('.stagger-child');
           children.forEach((child, index) => {
@@ -72,47 +65,32 @@ const Index = () => {
 
     // Observe all sections
     const sections = document.querySelectorAll('section');
-    sections.forEach((section) => {
+    sections.forEach(section => {
       section.classList.add('section-transition');
       sectionObserver.observe(section);
     });
-
     return () => {
       document.removeEventListener('mousemove', updateCursor);
       document.body.removeChild(cursor);
       sectionObserver.disconnect();
     };
   }, []);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-x-hidden">
+  return <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-x-hidden">
       <HeroSection />
-      <div className="section-divider">
-        <div className="divider-line"></div>
-      </div>
+      
       <PhotoGrid />
       <div className="section-divider">
         <div className="divider-wave"></div>
       </div>
       <FamilyMessages />
-      <div className="section-divider">
-        <div className="divider-geometric"></div>
-      </div>
+      
       <DadsFavorites />
-      <div className="section-divider">
-        <div className="divider-particles"></div>
-      </div>
+      
       <AchievementsTimeline />
-      <div className="section-divider">
-        <div className="divider-gradient"></div>
-      </div>
+      
       <MemoryCollage />
-      <div className="section-divider">
-        <div className="divider-spiral"></div>
-      </div>
+      
       <PersonalTribute />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
