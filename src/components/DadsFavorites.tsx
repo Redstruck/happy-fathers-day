@@ -24,19 +24,19 @@ const DadsFavorites = () => {
     {
       icon: Heart,
       title: "Family Time",
-      description: "Sunday dinners and holiday gatherings",
+      description: "",
       color: "from-red-400 to-rose-600"
     },
     {
       icon: Zap,
       title: "Tennis",
-      description: "The sport taught me that life is about giving your all, even when the score is against you",
+      description: "",
       color: "from-green-400 to-emerald-600"
     },
     {
       icon: Music,
       title: "Music",
-      description: "You've always found joy in music. For you, its more than just some sound.",
+      description: "",
       color: "from-purple-400 to-violet-600"
     }
   ];
@@ -58,7 +58,9 @@ const DadsFavorites = () => {
                 <favorite.icon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-white text-center mb-2">{favorite.title}</h3>
-              <p className="text-slate-300 text-center text-sm">{favorite.description}</p>
+              {favorite.description && (
+                <p className="text-slate-300 text-center text-sm">{favorite.description}</p>
+              )}
             </div>
           ))}
         </div>
