@@ -19,6 +19,16 @@ const HeroSection = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  const scrollToMemories = () => {
+    const photosSection = document.getElementById('photo-grid');
+    if (photosSection) {
+      photosSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Professional Animated Background */}
@@ -72,7 +82,10 @@ const HeroSection = () => {
         
         {/* Professional Call to Action */}
         <div className="mt-12">
-          <button className="neumorphism px-8 py-4 rounded-2xl text-slate-200 font-medium transition-all duration-300 hover:scale-105 magnetic-hover">
+          <button 
+            onClick={scrollToMemories}
+            className="neumorphism px-8 py-4 rounded-2xl text-slate-200 font-medium transition-all duration-300 hover:scale-105 magnetic-hover"
+          >
             Explore Memories
           </button>
         </div>
