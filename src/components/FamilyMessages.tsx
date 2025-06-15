@@ -49,11 +49,6 @@ const FamilyMessages = () => {
       name: "Mom",
       message: "Thank you for doing everything you do for us. It makes our lives worth living. Your attention to small details and the care we get from you is heartwarming.",
       color: "from-amber-400/20 to-orange-400/20"
-    },
-    {
-      name: "Uncle Tom",
-      message: "Brother, you've always been an inspiration. The way you care for your family is something we all admire. Happy Father's Day!",
-      color: "from-teal-400/20 to-cyan-400/20"
     }
   ];
 
