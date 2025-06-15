@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
-import { Heart, Coffee, Music, Book } from "lucide-react";
+import { Heart, Music, Book } from "lucide-react";
+import { Tennis } from "lucide-react";
 
 const DadsFavorites = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,10 +29,10 @@ const DadsFavorites = () => {
       color: "from-red-400 to-rose-600"
     },
     {
-      icon: Coffee,
-      title: "Morning Coffee",
-      description: "Starting each day with his favorite brew",
-      color: "from-amber-400 to-orange-600"
+      icon: Tennis,
+      title: "Tennis",
+      description: "The sport taught me that life is about giving your all, even when the score is against you",
+      color: "from-green-400 to-emerald-600"
     },
     {
       icon: Music,
