@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -278,6 +277,18 @@ body::before {
 
 /* Enhanced Animations */
 @layer utilities {
+  .animate-sway-0 {
+    animation: sway-left 4s ease-in-out infinite;
+  }
+
+  .animate-sway-1 {
+    animation: sway-right 5s ease-in-out infinite;
+  }
+
+  .animate-sway-2 {
+    animation: sway-left 3.5s ease-in-out infinite;
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -305,6 +316,30 @@ body::before {
 
   .rotate-y-180 {
     transform: rotateY(180deg);
+  }
+}
+
+@keyframes sway-left {
+  0%, 100% { 
+    transform: translateX(0px);
+  }
+  25% { 
+    transform: translateX(-8px);
+  }
+  75% { 
+    transform: translateX(8px);
+  }
+}
+
+@keyframes sway-right {
+  0%, 100% { 
+    transform: translateX(0px);
+  }
+  25% { 
+    transform: translateX(8px);
+  }
+  75% { 
+    transform: translateX(-8px);
   }
 }
 

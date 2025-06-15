@@ -1,7 +1,10 @@
+
 import { useState, useEffect } from "react";
-import { Music, Film, Coffee, Car, Book, Camera } from "lucide-react";
+import { Heart, Coffee, Music, Book } from "lucide-react";
+
 const DadsFavorites = () => {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
@@ -10,41 +13,64 @@ const DadsFavorites = () => {
     }, {
       threshold: 0.1
     });
+
     const element = document.getElementById('dads-favorites');
     if (element) observer.observe(element);
+
     return () => observer.disconnect();
   }, []);
-  const favorites = [{
-    icon: Music,
-    title: "Classic Rock",
-    color: "from-red-400 to-rose-600",
-    description: "Beatles, Led Zeppelin"
-  }, {
-    icon: Film,
-    title: "Action Movies",
-    color: "from-blue-400 to-indigo-600",
-    description: "Die Hard, Top Gun"
-  }, {
-    icon: Coffee,
-    title: "Morning Coffee",
-    color: "from-amber-400 to-orange-600",
-    description: "Black, no sugar"
-  }, {
-    icon: Car,
-    title: "Classic Cars",
-    color: "from-green-400 to-emerald-600",
-    description: "1967 Mustang"
-  }, {
-    icon: Book,
-    title: "History Books",
-    color: "from-purple-400 to-violet-600",
-    description: "WWII Stories"
-  }, {
-    icon: Camera,
-    title: "Photography",
-    color: "from-pink-400 to-fuchsia-600",
-    description: "Family moments"
-  }];
-  return;
+
+  const favorites = [
+    {
+      icon: Heart,
+      title: "Family Time",
+      description: "Sunday dinners and holiday gatherings",
+      color: "from-red-400 to-rose-600"
+    },
+    {
+      icon: Coffee,
+      title: "Morning Coffee",
+      description: "Starting each day with his favorite brew",
+      color: "from-amber-400 to-orange-600"
+    },
+    {
+      icon: Music,
+      title: "Classic Rock",
+      description: "The Beatles, Rolling Stones, and more",
+      color: "from-purple-400 to-violet-600"
+    },
+    {
+      icon: Book,
+      title: "History Books",
+      description: "Learning about the past and sharing stories",
+      color: "from-blue-400 to-indigo-600"
+    }
+  ];
+
+  return (
+    <section id="dads-favorites" className="py-20 px-4 relative">
+      <div className="container mx-auto">
+        <h2 className={`text-5xl font-bold text-center mb-16 bg-gradient-to-r from-slate-200 via-blue-300 to-slate-400 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          Dad's Favorites
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {favorites.map((favorite, index) => (
+            <div
+              key={index}
+              className={`favorite-card group relative p-6 rounded-2xl transition-all duration-1000 delay-${index * 200} ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} glassmorphism hover:scale-105`}
+            >
+              <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${favorite.color} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                <favorite.icon className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white text-center mb-2">{favorite.title}</h3>
+              <p className="text-slate-300 text-center text-sm">{favorite.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default DadsFavorites;
