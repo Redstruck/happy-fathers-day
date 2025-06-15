@@ -31,6 +31,11 @@ const FamilyMessages = () => {
       color: "from-violet-400/20 to-purple-400/20"
     },
     {
+      name: "Nishad",
+      message: "You've been more than just a father to me. You have been my mentor, a role model, and one of the biggest supporters in my life.",
+      color: "from-blue-400/20 to-cyan-400/20"
+    },
+    {
       name: "Michael",
       message: "Thanks for teaching me how to throw a ball, fix things, and most importantly, how to be a good person. You're the best dad ever!",
       color: "from-blue-400/20 to-cyan-400/20"
