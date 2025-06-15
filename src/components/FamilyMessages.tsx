@@ -24,7 +24,7 @@ const FamilyMessages = () => {
   const messages = [
     {
       name: "Mom",
-      message: "You've been the rock of our family for so many years. Your love and dedication never go unnoticed. Happy Father's Day to my amazing husband!",
+      message: "Thank you for being a great father to my kids. You are a great support system I have",
       color: "from-blue-400/20 to-violet-400/20"
     },
     {
