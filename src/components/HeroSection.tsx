@@ -3,22 +3,9 @@ import { useState, useEffect } from "react";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0
-  });
 
   useEffect(() => {
     setIsVisible(true);
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX - window.innerWidth / 2) * 0.01,
-        y: (e.clientY - window.innerHeight / 2) * 0.01
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const scrollToMemories = () => {
@@ -52,15 +39,12 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Geometric Background Elements - removed mouse position transform */}
+      {/* Geometric Background Elements */}
       <div className="absolute top-20 left-20 w-32 h-32 border-2 border-blue-400/20 rounded-full animate-float"></div>
       
       {/* Main Content */}
       <div 
         className={`text-center z-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-        style={{
-          transform: `perspective(1000px) rotateX(${mousePosition.y}deg) rotateY(${mousePosition.x}deg)`
-        }}
       >
         <h1 className="text-6xl md:text-8xl font-bold text-gradient-animated mb-6 font-serif animate-text-reveal">
           Happy Father's Day
