@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Heart, Music, Book, Zap } from "lucide-react";
 
@@ -35,8 +34,8 @@ const DadsFavorites = () => {
     },
     {
       icon: Music,
-      title: "Classic Rock",
-      description: "The Beatles, Rolling Stones, and more",
+      title: "Music",
+      description: "You've always found joy in music. For you, its more than just some sound.",
       color: "from-purple-400 to-violet-600"
     },
     {
