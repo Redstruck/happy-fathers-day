@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from "react";
-import { Heart, Music, Book, Zap } from "lucide-react";
+import { Heart, Music, Zap } from "lucide-react";
 
 const DadsFavorites = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,12 +38,6 @@ const DadsFavorites = () => {
       title: "Music",
       description: "You've always found joy in music. For you, its more than just some sound.",
       color: "from-purple-400 to-violet-600"
-    },
-    {
-      icon: Book,
-      title: "History Books",
-      description: "Learning about the past and sharing stories",
-      color: "from-blue-400 to-indigo-600"
     }
   ];
 
@@ -53,7 +48,7 @@ const DadsFavorites = () => {
           Dad's Favorites
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {favorites.map((favorite, index) => (
             <div
               key={index}
