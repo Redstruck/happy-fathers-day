@@ -30,7 +30,7 @@ const HeroSection = () => {
       </div>
 
       {/* Geometric Background Elements */}
-      <div className="absolute top-20 left-20 w-32 h-32 border-2 border-blue-400/20 rounded-full animate-float"></div>
+      
       
       {/* Main Content */}
       <div className={`text-center z-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
