@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const PhotoGrid = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,6 +21,15 @@ const PhotoGrid = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const photos = [
     "photo-1465146344425-f00d5f5c8f07",
     "photo-1500673922987-e212871fec22", 
@@ -33,49 +43,61 @@ const PhotoGrid = () => {
   ];
 
   return (
-    <section id="photo-grid" className="py-20 px-4">
-      <div className="container mx-auto">
-        <h2 className={`text-5xl font-bold text-center mb-16 bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          Memories Together
+    <section id="photo-grid" className="py-20 px-4 relative overflow-hidden">
+      {/* Floating particles background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-blue-400/20 rounded-full animate-float-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto relative z-10">
+        <h2 className={`text-5xl font-bold text-center mb-16 bg-gradient-to-r from-slate-200 via-blue-300 to-slate-400 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          Precious Memories
         </h2>
         
-        <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
           {photos.map((photo, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden rounded-2xl aspect-square group transition-all duration-1000 delay-${index * 100} ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+              className={`photo-card group relative overflow-hidden rounded-2xl aspect-square transition-all duration-1000 delay-${index * 100} ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
               style={{
-                animation: `float-${(index % 3) + 1} ${3 + (index % 2)}s ease-in-out infinite`
+                transform: `perspective(1000px) rotateX(${(mousePosition.y - window.innerHeight / 2) * 0.01}deg) rotateY(${(mousePosition.x - window.innerWidth / 2) * 0.01}deg)`
               }}
             >
-              <img
-                src={`https://images.unsplash.com/${photo}?w=400&h=400&fit=crop`}
-                alt={`Memory ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-sm font-medium">Beautiful Memory</p>
+              <div className="photo-card-inner w-full h-full relative preserve-3d">
+                <div className="photo-front absolute inset-0 backface-hidden">
+                  <img
+                    src={`https://images.unsplash.com/${photo}?w=400&h=400&fit=crop`}
+                    alt={`Memory ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="absolute inset-0 glassmorphism opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                </div>
+                <div className="photo-back absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center p-6">
+                  <div className="text-center text-white">
+                    <h3 className="text-lg font-bold mb-2">Beautiful Memory</h3>
+                    <p className="text-sm opacity-80">A special moment captured in time</p>
+                  </div>
+                </div>
               </div>
+              
+              {/* Ripple effect on click */}
+              <div className="ripple absolute inset-0 pointer-events-none"></div>
             </div>
           ))}
         </div>
       </div>
-      
-      <style jsx>{`
-        @keyframes float-1 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(1deg); }
-        }
-        @keyframes float-2 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(-1deg); }
-        }
-        @keyframes float-3 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-8px) rotate(0.5deg); }
-        }
-      `}</style>
     </section>
   );
 };

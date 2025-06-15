@@ -1,34 +1,91 @@
+
 import { useState, useEffect } from "react";
+
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
     setIsVisible(true);
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ 
+        x: (e.clientX - window.innerWidth / 2) * 0.01,
+        y: (e.clientY - window.innerHeight / 2) * 0.01
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-  return <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-purple-600 to-blue-600 opacity-20 animate-pulse"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-red-500/10 to-pink-500/10"></div>
+
+  return (
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Professional Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-violet-600/10 to-slate-600/10 animate-gradient"></div>
       
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-4 h-4 bg-yellow-400 rounded-full animate-bounce"></div>
-      <div className="absolute top-40 right-32 w-6 h-6 bg-orange-500 rounded-full animate-pulse"></div>
-      <div className="absolute bottom-32 left-40 w-5 h-5 bg-pink-500 rounded-full animate-bounce delay-300"></div>
+      {/* Sophisticated Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-3 h-3 bg-gradient-to-r from-blue-400/30 to-violet-400/30 rounded-full animate-float-particle"
+            style={{
+              left: `${10 + Math.random() * 80}%`,
+              top: `${10 + Math.random() * 80}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${4 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Geometric Background Elements */}
+      <div 
+        className="absolute top-20 left-20 w-32 h-32 border-2 border-blue-400/20 rounded-full animate-float"
+        style={{
+          transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-32 right-32 w-24 h-24 border-2 border-violet-400/20 rotate-45 animate-float"
+        style={{
+          transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -15}px) rotate(45deg)`,
+          animationDelay: '1s'
+        }}
+      ></div>
       
       {/* Main Content */}
-      <div className={`text-center z-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent mb-6 font-serif">
+      <div 
+        className={`text-center z-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        style={{
+          transform: `perspective(1000px) rotateX(${mousePosition.y}deg) rotateY(${mousePosition.x}deg)`
+        }}
+      >
+        <h1 className="text-6xl md:text-8xl font-bold text-gradient-animated mb-6 font-serif animate-text-reveal">
           Happy Father's Day
         </h1>
-        <p className="text-2xl md:text-3xl text-white/90 font-light mb-8">
+        <p className="text-2xl md:text-3xl text-slate-300 font-light mb-8 font-inter">
           To the most amazing dad in the world
         </p>
-        <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full"></div>
+        <div className="w-32 h-1 bg-gradient-to-r from-blue-400 via-violet-400 to-slate-400 mx-auto rounded-full animate-gradient"></div>
+        
+        {/* Professional Call to Action */}
+        <div className="mt-12">
+          <button className="neumorphism px-8 py-4 rounded-2xl text-slate-200 font-medium transition-all duration-300 hover:scale-105 magnetic-hover">
+            Explore Memories
+          </button>
+        </div>
       </div>
       
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        
+      {/* Enhanced Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="w-6 h-10 border-2 border-slate-400/50 rounded-full relative">
+          <div className="w-1 h-3 bg-gradient-to-b from-blue-400 to-violet-400 rounded-full absolute top-2 left-1/2 transform -translate-x-1/2 animate-bounce"></div>
+        </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
