@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -36,13 +37,8 @@ const FamilyMessages = () => {
       color: "from-blue-400/20 to-cyan-400/20"
     },
     {
-      name: "Michael",
-      message: "Thanks for teaching me how to throw a ball, fix things, and most importantly, how to be a good person. You're the best dad ever!",
-      color: "from-blue-400/20 to-cyan-400/20"
-    },
-    {
-      name: "Emma",
-      message: "Dad, your jokes might be terrible, but your hugs are the best in the world. Thank you for always making me feel safe and loved.",
+      name: "Nishad",
+      message: "Thank you, Dad, for always pushing me beyond what I thought I could do. Your belief in me, even when I doubted myself, has shaped the me and the way I face challenges",
       color: "from-emerald-400/20 to-green-400/20"
     },
     {
