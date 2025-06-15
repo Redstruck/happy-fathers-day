@@ -48,20 +48,68 @@ const Index = () => {
       el.addEventListener('mouseleave', handleLeave);
     });
 
+    // Enhanced section transitions with stagger effects
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-visible');
+          
+          // Add stagger effect to child elements
+          const children = entry.target.querySelectorAll('.stagger-child');
+          children.forEach((child, index) => {
+            setTimeout(() => {
+              child.classList.add('stagger-visible');
+            }, index * 100);
+          });
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+      section.classList.add('section-transition');
+      sectionObserver.observe(section);
+    });
+
     return () => {
       document.removeEventListener('mousemove', updateCursor);
       document.body.removeChild(cursor);
+      sectionObserver.disconnect();
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-x-hidden">
       <HeroSection />
+      <div className="section-divider">
+        <div className="divider-line"></div>
+      </div>
       <PhotoGrid />
+      <div className="section-divider">
+        <div className="divider-wave"></div>
+      </div>
       <FamilyMessages />
+      <div className="section-divider">
+        <div className="divider-geometric"></div>
+      </div>
       <DadsFavorites />
+      <div className="section-divider">
+        <div className="divider-particles"></div>
+      </div>
       <AchievementsTimeline />
+      <div className="section-divider">
+        <div className="divider-gradient"></div>
+      </div>
       <MemoryCollage />
+      <div className="section-divider">
+        <div className="divider-spiral"></div>
+      </div>
       <PersonalTribute />
     </div>
   );
