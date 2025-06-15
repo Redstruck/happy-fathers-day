@@ -60,22 +60,22 @@ const PersonalTribute = () => {
                   Dear Dad,
                 </p>
                 <p className="mb-6">
-                  As I sit here thinking about all the ways you've shaped my life, I'm overwhelmed with gratitude. You've been more than just a father – you've been my mentor, my role model, and my biggest supporter through every chapter of my life.
+                  Thank you for always being there for me. Thank you for pushing me to do better. Thank you for showing me how to stay determined and strong-willed when things get tough.
                 </p>
                 <p className="mb-6">
-                  From teaching me how to ride a bike to showing me how to face life's challenges with courage and integrity, you've always been there. Your wisdom, your patience, and your unconditional love have been the foundation upon which I've built my own life.
+                  Thank you for believing in me even when I didn’t. You’ve taught me that change isn’t always easy, but it’s always worth it.
                 </p>
                 <p className="mb-6">
-                  You taught me that being strong doesn't mean never falling down – it means getting back up every time. You showed me that success isn't measured by what you accumulate, but by the lives you touch and the love you give.
+                  Thank you for encouraging (and sometimes forcing) me to step into things I was unsure about and helping me grow through them. Thank you for always guiding me with your strength and support.
                 </p>
                 <p className="mb-6">
-                  Thank you for all the sacrifices you made, for all the late nights helping with homework, for cheering the loudest at every game, and for believing in me even when I didn't believe in myself.
+                  Thank you for teaching me the value of discipline, even when I didn’t want to hear it or follow it. Thank you for being patient when I made mistakes and for reminding me to keep going. 
                 </p>
                 <p className="mb-6">
-                  You are my hero, my inspiration, and the man I aspire to be. Happy Father's Day to the most incredible dad in the world.
+                  Thank you for making time for us, no matter how busy life got. Thank you for being someone I can always count on, someone I trust, and someone I look up to every day. Thank you for being yourself. Happy Father's day.
                 </p>
                 <p className="text-xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-                  With all my love and admiration,<br />
+                  With my love,<br />
                   Your grateful child
                 </p>
               </div>
