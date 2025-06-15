@@ -21,8 +21,24 @@ const PersonalTribute = () => {
   }, []);
 
   return (
-    <section id="personal-tribute" className="py-20 px-4 min-h-screen flex items-center">
-      <div className="container mx-auto">
+    <section id="personal-tribute" className="py-20 px-4 min-h-screen flex items-center relative overflow-hidden">
+      {/* Floating Background Circles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 14 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-3 h-3 bg-gradient-to-r from-violet-400/30 to-indigo-400/30 rounded-full animate-float-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 4}s`,
+              animationDuration: `${5 + Math.random() * 3}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className={`text-5xl font-bold text-center mb-16 bg-gradient-to-r from-violet-400 via-purple-500 to-indigo-600 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             A Personal Message

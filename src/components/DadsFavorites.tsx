@@ -31,8 +31,24 @@ const DadsFavorites = () => {
   ];
 
   return (
-    <section id="dads-favorites" className="py-20 px-4">
-      <div className="container mx-auto">
+    <section id="dads-favorites" className="py-20 px-4 relative overflow-hidden">
+      {/* Floating Background Circles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-full animate-float-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <h2 className={`text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           Dad's Favorites
         </h2>

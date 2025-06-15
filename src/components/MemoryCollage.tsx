@@ -30,8 +30,24 @@ const MemoryCollage = () => {
   ];
 
   return (
-    <section id="memory-collage" className="py-20 px-4">
-      <div className="container mx-auto">
+    <section id="memory-collage" className="py-20 px-4 relative overflow-hidden">
+      {/* Floating Background Circles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 18 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-gradient-to-r from-orange-400/30 to-pink-400/30 rounded-full animate-float-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 6}s`,
+              animationDuration: `${4 + Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <h2 className={`text-5xl font-bold text-center mb-16 bg-gradient-to-r from-orange-400 via-red-500 to-pink-600 bg-clip-text text-transparent transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           Memory Lane
         </h2>
